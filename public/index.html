@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>homeWork - week07 - day01</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>TODO'S</h1>
+      <form v-on:submit.prevent="saveNewItem">
+        <label for="new-item"> Add a new thing to your list: </label>
+        <input type="text" id="new-item" v-model="newItem" required>
+        <input id="low" type="radio" name="priority" required>
+        <label for="low">Low</label>
+        <input id="high" type="radio" name="priority">
+        <label for="high">High</label>
+        <button type="submit">Save</button>
+      </form>
+      <ul>
+        <li v-for="todo in todos" v-bind:style="styleList">
+          <span v-if="todo.priority == 'low'" v-bind:style="styleLow">{{todo.name}}</span>
+          <span v-if="todo.priority == 'high'" v-bind:style="styleHigh">{{todo.name}}</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
